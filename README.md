@@ -1,24 +1,67 @@
-# README
+# DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column             | Type                | Options                 |
+|--------------------|---------------------|-------------------------|
+| nick_name          | string              | null: false             |
+| email              | string              | null: false             |
+| encrypted_password | string              | null: false             |
+| first_name_kana    | string              | null: false             |
+| family_name_kana   | string              | null: false             |
+| first_name         | string              | null: false             |
+| family_name        | string              | null: false             |
+| birth_day          | date                | null: false             |
 
-* Ruby version
+### Association
 
-* System dependencies
+* has_many :items dependent:destroy
+* has_many :histories dependent:destroy
 
-* Configuration
+## items table
 
-* Database creation
+| Column             | Type                | Options                 |
+|--------------------|---------------------|-------------------------|
+| user               | references          | foreign_key: true       |
+| title              | string              | null: false             |
+| description        | text                | null: false             |
+| price              | integer             | null: false             |
+| condition_id       | integer             | null: false             |
+| shipping_cost_id   | integer             | null: false             |
+| shipping_days_id   | integer             | null: false             |
+| ship_from_id       | integer             | null: false             |
+| category_id        | integer             | null: false             |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+* has_one :history
+* belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## histories table
 
-* ...
+| Column             | Type                | Options                 |
+|--------------------|---------------------|-------------------------|
+| user               | references          | foreign_key: true       |
+| item               | references          | foreign_key: true       |
+
+### Association
+
+* has_one :destination
+* belongs_to :item
+* belongs_to :user
+
+## destinations table
+
+| Column             | Type                | Options                 |
+|--------------------|---------------------|-------------------------|
+| history            | references          | foreign_key: true       || postcode           | string              | null: false             |
+| prefecture_id      | integer             | null: false             |
+| city               | string              | null: false             |
+| street_address     | string              | null: false             |
+| building_name      | string              |                         |
+| phone_number       | string              | null: false             |
+
+### Association
+
+* belongs_to :history
