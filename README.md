@@ -16,7 +16,7 @@
 ### Association
 
 * has_many :items dependent:destroy
-* has_many :histories dependent:destroy
+* has_many :order dependent:destroy
 
 ## items table
 
@@ -29,16 +29,16 @@
 | condition_id       | integer             | null: false             |
 | shipping_cost_id   | integer             | null: false             |
 | shipping_days_id   | integer             | null: false             |
-| ship_from_id       | integer             | null: false             |
+| prefecture_id      | integer             | null: false             |
 | category_id        | integer             | null: false             |
 
 ### Association
 
-* has_one :history
+* has_one :order
 * belongs_to :user
 
 
-## histories table
+## order table
 
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
@@ -64,4 +64,4 @@
 
 ### Association
 
-* belongs_to :history
+* belongs_to :order

@@ -2,8 +2,6 @@ require 'rails_helper'
 
 describe User do
   describe '#create' do
-
-  
     # 入力されている場合のテスト ▼
 
     it '全ての項目の入力が存在すれば登録できること' do
@@ -105,7 +103,6 @@ describe User do
       expect(user.errors.full_messages).to include('Password is invalid')
     end
 
- 
     # 名前全角入力のテスト ▼
 
     it 'family_nameが全角入力でなければ登録できないこと' do
