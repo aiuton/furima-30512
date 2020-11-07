@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe User do
   describe '#create' do
+
+  
     # 入力されている場合のテスト ▼
 
     it '全ての項目の入力が存在すれば登録できること' do
@@ -68,6 +70,14 @@ describe User do
       expect(user.errors.full_messages).to include("Birth day can't be blank")
     end
 
+    # emailの＠混合テスト ▼
+
+    it 'emailが＠混合でなければ登録できないこと' do
+      user = FactoryBot.build(:user, email: 'aaaaaa')
+      user.valid?
+      expect(user.errors.full_messages).to include('Email is invalid')
+    end
+
     # パスワードの文字数テスト ▼
 
     it 'passwordが6文字以上であれば登録できること' do
@@ -83,12 +93,19 @@ describe User do
 
     # パスワードの半角英数字混合テスト ▼
 
-    it 'passwordが半角英数字混合でなければ登録できないこと' do
+    it 'passwordが半角英字のみの登録できないこと' do
       user = FactoryBot.build(:user, password: 'abcdef', encrypted_password: 'abcdef')
       user.valid?
       expect(user.errors.full_messages).to include('Password is invalid')
     end
 
+    it 'passwordが半角数字のみの登録できないこと' do
+      user = FactoryBot.build(:user, password: '123456', encrypted_password: '123456')
+      user.valid?
+      expect(user.errors.full_messages).to include('Password is invalid')
+    end
+
+ 
     # 名前全角入力のテスト ▼
 
     it 'family_nameが全角入力でなければ登録できないこと' do
