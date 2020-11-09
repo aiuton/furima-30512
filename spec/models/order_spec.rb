@@ -4,7 +4,6 @@ describe Order, type: :model do
   describe '#create' do
     # nul:false, presence: true のテスト ▼
 
-
     it 'postcodeがないと保存できない' do
       order = FactoryBot.build(:order, postcode: '')
       order.valid?
@@ -34,6 +33,5 @@ describe Order, type: :model do
       order.valid?
       expect(order.errors[:phone_number]).to include("can't be blank")
     end
-
   end
 end

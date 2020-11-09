@@ -1,59 +1,39 @@
 require 'rails_helper'
 describe Destination do
   describe '#create' do
-
-
-    it "postcodeが空なら保存できない" do
-    
+    it 'postcodeが空なら保存できない' do
       destination = FactoryBot.build(:destination, postcode: '')
       destination.valid?
       expect(destination.errors[:postcode]).to include("can't be blank")
     end
-
   end
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # it "postal_codeが意図しない形ならNG（全角）" do
-    #   address = build(:address, postal_code: "１１１ー１１１１")
-    #   address.valid?
-    #   expect(address.errors[:postal_code]).to include("は不正な値です")
-    # end
-    # it "postal_codeが意図しない形ならNG（ハイフンなし）" do
-    #   address = build(:address, postal_code: "1111111")
-    #   address.valid?
-    #   expect(address.errors[:postal_code]).to include("は不正な値です")
-    # end
-    # it "prefectureが空ならNG" do
-    #   address = build(:address, prefecture: nil)
-    #   address.valid?
-    #   expect(address.errors[:prefecture]).to include("を入力してください")
-    # end
-    # it "cityが空ならNG" do
-    #   address = build(:address, city: nil)
-    #   address.valid?
-    #   expect(address.errors[:city]).to include("を入力してください")
-    # end
-    # it "addressが空ならNG" do
-    #   address = build(:address, address: nil)
-    #   address.valid?
-    #   expect(address.errors[:address]).to include("を入力してください")
-    # end
+# it "postal_codeが意図しない形ならNG（全角）" do
+#   address = build(:address, postal_code: "１１１ー１１１１")
+#   address.valid?
+#   expect(address.errors[:postal_code]).to include("は不正な値です")
+# end
+# it "postal_codeが意図しない形ならNG（ハイフンなし）" do
+#   address = build(:address, postal_code: "1111111")
+#   address.valid?
+#   expect(address.errors[:postal_code]).to include("は不正な値です")
+# end
+# it "prefectureが空ならNG" do
+#   address = build(:address, prefecture: nil)
+#   address.valid?
+#   expect(address.errors[:prefecture]).to include("を入力してください")
+# end
+# it "cityが空ならNG" do
+#   address = build(:address, city: nil)
+#   address.valid?
+#   expect(address.errors[:city]).to include("を入力してください")
+# end
+# it "addressが空ならNG" do
+#   address = build(:address, address: nil)
+#   address.valid?
+#   expect(address.errors[:address]).to include("を入力してください")
+# end
 
 # require 'rails_helper'
 
@@ -61,7 +41,6 @@ end
 
 #   describe '#create' do
 #     # nul:false, presence: true のテスト ▼
-
 
 #     it 'postcodeがないと保存できない' do
 #       destination = FactoryBot.build(:destination, postcode: '')

@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe Item, type: :model do
   describe '#create' do
-    
     # nul:false, presence: true のテスト ▼
 
     it 'imageがないと保存できない' do
