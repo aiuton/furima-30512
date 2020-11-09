@@ -13,13 +13,13 @@ describe '購入情報の保存' do
 
     context "商品データが保存されない場合" do
     it 'postcodeが空ならNG' do
-      item_order = FactoryBot.build(:item_order, postocode:'')
+      item_order = FactoryBot.build(:item_order, postcode:'')
       item_order.valid?
       expect(item_order.errors[:postcode]).to include("can't be blank")
     end
 
     it 'postocodeが意図しない形ならNG（ハイフンなし）' do
-      item_order = FactoryBot.build(:item_order, postocode:'1111111')
+      item_order = FactoryBot.build(:item_order, postcode:'1111111')
       item_order.valid?
       expect(item_order.errors[:postcode]).to include("is invalid")
     end

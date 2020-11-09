@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+         has_many :items
+         has_many :orders
+
   with_options presence: true do
     NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
     KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
