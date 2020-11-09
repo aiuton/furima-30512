@@ -55,7 +55,8 @@
 
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
-| history            | references          | foreign_key: true       || postcode           | string              | null: false             |
+| history            | references          | foreign_key: true       |
+| postcode           | string              | null: false             |
 | prefecture_id      | integer             | null: false             |
 | city               | string              | null: false             |
 | street_address     | string              | null: false             |
