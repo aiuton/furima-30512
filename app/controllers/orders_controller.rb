@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = 'sk_test_62b87419a5408a4739a14fa5'  # 自身のPAY.JPテスト秘密鍵を記述しましょう
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  
     Payjp::Charge.create(
       amount: Item.find(params[:item_id]).price, # 商品の値段
       card: item_order_params[:token], # カードトークン
@@ -38,4 +38,6 @@ class OrdersController < ApplicationController
   def move_to_index
     redirect_to root_path if current_user.id == @item.user_id || @item.order.present?
   end
+
+  
 end
