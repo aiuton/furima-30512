@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    image {}
+    image            {}
     id               { '1' }
     title            { 'example_title' }
     description      { 'example_des' }
